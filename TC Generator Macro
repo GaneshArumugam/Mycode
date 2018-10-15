@@ -1,0 +1,59 @@
+Private Sub CommandButton1_Click()
+
+Dim row_num, test_case, row_num_test_case As Integer
+row_num = 2
+test_case = 2
+row_num_test_case = 2
+'Checking for inputs given by the user
+Do While (Sheet1.Cells(row_num, 1) <> "")
+'DDL Validation
+    'Sheet2.Cells(row_num_test_case, 1) = "TC_" + CStr(test_case)
+    Sheet2.Cells(row_num_test_case, 2) = "TC" + CStr(test_case) + "_DV_" + Sheet1.Cells(row_num, 1)
+    Sheet2.Cells(row_num_test_case, 3) = "Verify the data are intact before and after the upgradation for the table " + Sheet1.Cells(row_num, 1)
+    Sheet2.Cells(row_num_test_case, 4) = "Step 1"
+    Sheet2.Cells(row_num_test_case, 5) = "Verify whether the listed below objects are intact before and after the upgradation for the table " + Sheet1.Cells(row_num, 1) + vbCrLf + "1. Column names" + vbCrLf + "2. Data type and Length" + vbCrLf + "3. Primary key" + vbCrLf + "4. Foreign keys" + vbCrLf + "5. indexes"
+    Sheet2.Cells(row_num_test_case, 6) = "Objects should be the same"
+    row_num_test_case = row_num_test_case + 1
+'test_case = test_case + 1
+'Data Validation
+    'Sheet2.Cells(row_num_test_case, 1) = "TC_" + CStr(test_case)
+    'Sheet2.Cells(row_num_test_case, 2) = "Data Validation"
+    'Sheet2.Cells(row_num_test_case, 3) = "Verify the data are intact before and after the upgradation for the table " + Sheet1.Cells(row_num, 1)
+    Sheet2.Cells(row_num_test_case, 4) = "Step 2"
+    Sheet2.Cells(row_num_test_case, 5) = "Verify whether the number of rows are intact before and after the upgradation for the table " + Sheet1.Cells(row_num, 1)
+    Sheet2.Cells(row_num_test_case, 6) = "Row count should  be the same"
+    row_num_test_case = row_num_test_case + 1
+    Sheet2.Cells(row_num_test_case, 4) = "Step 3"
+    Sheet2.Cells(row_num_test_case, 5) = "Verify whether the data are intact before and after the upgradation"
+    Sheet2.Cells(row_num_test_case, 6) = "Data should be intact"
+    row_num_test_case = row_num_test_case + 1
+    Sheet2.Cells(row_num_test_case, 4) = "Step 4"
+    Sheet2.Cells(row_num_test_case, 5) = "Verify whether the parent-child relationship to the corresponding tables (Reference integrity constraint) are intact"
+    Sheet2.Cells(row_num_test_case, 6) = "Relationship should met the corresponding tables"
+    row_num_test_case = row_num_test_case + 1
+    Sheet2.Cells(row_num_test_case, 4) = "Step 5"
+    Sheet2.Cells(row_num_test_case, 5) = "Verify if any duplicate is available in the data"
+    Sheet2.Cells(row_num_test_case, 6) = "Duplicate should not be present"
+row_num_test_case = row_num_test_case + 1
+test_case = test_case + 1
+'For Incremental load test cases
+    If (Sheet1.Cells(row_num, 2) = "Y") Then
+    Sheet2.Cells(row_num_test_case, 2) = "TC" + CStr(test_case) + "_IL_DV_" + Sheet1.Cells(row_num, 1)
+    Sheet2.Cells(row_num_test_case, 3) = "Verify the history capture is working after upgradation for table " + Sheet1.Cells(row_num, 1)
+    Sheet2.Cells(row_num_test_case, 4) = "Step 1"
+    Sheet2.Cells(row_num_test_case, 5) = "Ensure incremental load is being done in Old version for the table " + Sheet1.Cells(row_num, 1)
+    Sheet2.Cells(row_num_test_case, 6) = "Data changes must be reflected"
+    row_num_test_case = row_num_test_case + 1
+    Sheet2.Cells(row_num_test_case, 4) = "Step 2"
+    Sheet2.Cells(row_num_test_case, 5) = "Ensure incremental load is being done in New version for the table " + Sheet1.Cells(row_num, 1)
+    Sheet2.Cells(row_num_test_case, 6) = "Data changes must be reflected"
+    row_num_test_case = row_num_test_case + 1
+    Sheet2.Cells(row_num_test_case, 4) = "Step 3"
+    Sheet2.Cells(row_num_test_case, 5) = "Compare the data between two version and ensure the intactness"
+    Sheet2.Cells(row_num_test_case, 6) = "Data should be intact"
+    row_num_test_case = row_num_test_case + 1
+    test_case = test_case + 1
+    End If
+row_num = row_num + 1
+Loop
+End Sub

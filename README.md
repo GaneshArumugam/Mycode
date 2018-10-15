@@ -1,2 +1,2 @@
-# Mycode
-Automate the web based application-General
+# ETL-Automate
+Automate the ETL Testing
